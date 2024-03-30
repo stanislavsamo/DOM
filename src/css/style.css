@@ -1,0 +1,25 @@
+.field {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .cell {
+    width: 75px;
+    height: 75px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+  }
+  
+  .character {
+    width: 65px;
+    height: 65px;
+    position: absolute;
+    background-image: url('../img/goblin.png'); 
+    background-size: cover;
+  }
+  
+  
