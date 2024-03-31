@@ -1,0 +1,32 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main  # здесь указывается ветка, из которой будет происходить развертывание
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # версия Node.js, которая будет использоваться
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build  # команда для сборки вашего приложения
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages  # ветка, на которую будет развернуто приложение
+        FOLDER: dist  # папка, содержащая файлы сборки
